@@ -21,6 +21,8 @@ class BaseModel:
                     self.__dict__[key] = datetime.strptime(val, "%Y-%m-%dT%H:%M:%S.%f")
                 else:
                     self.__dict__[key] = val
+        else:
+            models.storage.new(self)
 
 
     def __str__(self):
@@ -34,6 +36,7 @@ class BaseModel:
         everytime the object changes
         """
         self.updated_at = datetime.now()
+        models.storage.save()
 
     def to_dict(self):
         """
