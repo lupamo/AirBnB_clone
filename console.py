@@ -20,6 +20,9 @@ class HBNBCommand(cmd.Cmd):
         """Command handles the end of file"""
         print()
         return True
+    def emptyline(self):
+        """when nothing is inputed pass"""
+        pass
 
 
 if __name__ == '__main__':
