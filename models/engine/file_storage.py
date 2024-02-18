@@ -6,6 +6,7 @@ and deserialization
 import json
 import os
 from models.base_model import BaseModel
+from models.user import User
 
 class FileStorage:
     """ The class for storing and retrieving date."""

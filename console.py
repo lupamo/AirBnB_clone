@@ -7,13 +7,14 @@ import re
 import json
 from models.base_model import BaseModel
 from models import storage
+from models.user import User
 
 
 class HBNBCommand(cmd.Cmd):
     """ Class for the command interpreter"""
 
     prompt = "(hbnb)"
-    valid_classes = ["BaseModel"]
+    valid_classes = ["BaseModel", "user"]
 
     def do_quit(self, arg):
         """The quit command to exit the program"""
@@ -42,8 +43,9 @@ class HBNBCommand(cmd.Cmd):
         elif commands[0] not in self.valid_classes:
             print("** class doesn't exist **")
         else:
-            new_instance = BaseModel()
-            new_instance.save()
+            #new_instance = BaseModel() modify this line since code is handling more thanone class
+            new_instance = eval(f"{cpmmands[0]}()")
+            storage.save()
             print(new_instance.id)
 
     def do_show(self, arg):
